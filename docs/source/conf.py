@@ -2,7 +2,7 @@ import datetime
 
 project = 'Shufflrr'
 copyright = '2014-{}, Shufflrr'.format(
-        datetime.datetime.now()
+        datetime.datetime.now().year
 )
 author = 'Shufflrr'
 
