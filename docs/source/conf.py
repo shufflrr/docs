@@ -1,8 +1,8 @@
-from django.utils import timezone
+import datetime
 
 project = 'Shufflrr'
 copyright = '2014-{}, Shufflrr'.format(
-    timezone.now().year
+        datetime.datetime.now()
 )
 author = 'Shufflrr'
 
