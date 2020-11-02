@@ -18,7 +18,9 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Shufflrr'
-copyright = '2020, Shufflrr'
+copyright = '2014-{}, Shufflrr'.format(
+    timezone.now().year
+)
 author = 'Shufflrr'
 
 # The full version, including alpha/beta/rc tags
