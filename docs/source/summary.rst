@@ -39,10 +39,12 @@ Purpose
 The purpose of this documentation is to provide information on the core Shufflrr API endpoints so your team can easily integrate your system(s) with Shufflrr.
 
 .. note::
+
    This is a note.
 
 
 .. warning::
+
    This is a warning.
 
 
