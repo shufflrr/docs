@@ -1,5 +1,5 @@
 Shufflrr: Presentation Management Software Documentation
-=========================================
+==========================================================
 
 `Shufflrr <https://shufflrr.com>`_ simplifies content management by indexing and rendering all 
 content, making it accessible for use immediately in presentations, and 
