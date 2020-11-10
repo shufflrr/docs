@@ -783,4 +783,3 @@ Documentation can be found at:
 `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Presentations/Presentations_Slides`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Presentations/Presentations_Slides
-
