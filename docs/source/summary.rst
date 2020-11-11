@@ -235,19 +235,16 @@ Login
 
 In order for Shufflrr to validate your API user has the rights to perform the actions, the account must login.  To interface with the Shufflrr APIs the first step is to authenticate the session by using the Account Login API.  This API is used to send in a specific user (API User).  This API will validate that the account has access to your Shufflrr portal.  A successful call will return a cookie which will need to be used in subsequent calls to other APIs to validate that the session is authenticated and authorized. 
 
-This is a :green:`POST` method
++-------------------------+---------------------------------------------------------+-----------------------------------------------------------------------------+
+| Method type             | API Location                                            | Swagger documentation location                                              |
++=========================+=========================================================+=============================================================================+
+| :green:`POST`           | `https://wwwapi.shufflrr.com/api/account/login`__       | `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Account/Account_Login`__   |
+|                         |.. __: https://wwwapi.shufflrr.com/api/account/login     |.. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Account/Account_Login |
++-------------------------+---------------------------------------------------------+-----------------------------------------------------------------------------+
 
-The Login API can be found at:
 
-`https://wwwapi.shufflrr.com/api/account/login`__
 
-.. __: https://wwwapi.shufflrr.com/api/account/login
 
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Account/Account_Login`__
-
-.. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Account/Account_Login
 
 Sample Request Body
 ###################
