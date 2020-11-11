@@ -237,6 +237,7 @@ In order for Shufflrr to validate your API user has the rights to perform the ac
 
 .. list-table:: 
    :header-rows: 0
+   :widths: 10 70
    
    *  -  **Method type**
       -  :green:`POST`  
