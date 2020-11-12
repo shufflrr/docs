@@ -799,10 +799,11 @@ To get information on all the slides of a specific presentation use the Presenta
       -  :blue:`GET`
    *  -  **API Location**
       -  `https://wwwapi.shufflrr.com/api/presentations/{id}/slides`__
-	     Where {id} is the File ID of the Presentation you wish to get the slides of
    *  -  **Swagger documentation location**
       -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Presentations/Presentations_Slides`__
 
 .. __: https://wwwapi.shufflrr.com/api/presentations/{id}/slides
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Presentations/Presentations_Slides
+
+Where **{id}** is the File ID of the Presentation you wish to get the slides of
