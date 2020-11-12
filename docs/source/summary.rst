@@ -436,7 +436,7 @@ To move a folder and all its contents use the Folder Move API.  You will need to
       -  :green:`POST` 
    *  -  **API Location**
       -  `https://wwwapi.shufflrr.com/api/folders/{id}/move`__
-	      Where **{id}** is the Folder ID of the folder to move
+	      Where {id} is the Folder ID of the folder to move
    *  -  **Swagger documentation location**
       -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Move`__
 	  
@@ -478,7 +478,7 @@ To remove a folder and all its contents use the folder delete method.  The id in
       -  :red:`DELETE`
    *  -  **API Location**
       -  `https://wwwapi.shufflrr.com/api/folders/{id}`__
-	     Where **{id}** is the Folder ID of the folder to remove
+	     Where {id} is the Folder ID of the folder to remove
    *  -  **Swagger documentation location**
       -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Delete`__
 	  
@@ -523,7 +523,7 @@ Shufflrr uses the Windows method of file management.  When a file is uploaded to
       -  :green:`POST`
    *  -  **API Location**
       -  `https://wwwapi.shufflrr.com/api/folders/{id}/upload`__
-	     Where **{id}** is the Folder ID of the folder to upload to
+	     Where {id} is the Folder ID of the folder to upload to
    *  -  **Swagger documentation location**
       -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Upload`__
 	  
@@ -636,7 +636,7 @@ To get the detailed information on a specific file call the Get File API.  Repla
       -  :blue:`GET`
    *  -  **API Location**
       -  `https://wwwapi.shufflrr.com/api/files/{id}`__
-	     Where **{id}** is the File ID of the file you want to get
+	     Where {id} is the File ID of the file you want to get
    *  -  **Swagger documentation location**
       -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Get_0`__
 
@@ -729,7 +729,7 @@ To download a file from Shufflrr use the files download API.  Replace the {id} i
       -  :blue:`GET`
    *  -  **API Location**
       -  `https://wwwapi.shufflrr.com/api/files/{id}/download`__
-	     Where **{id}** is the File ID of the file you wish to download
+	     Where {id} is the File ID of the file you wish to download
    *  -  **Swagger documentation location**
       -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Download`__
 	  
@@ -752,7 +752,7 @@ If you wish to remove the file immediately send in an empty request body.  If yo
       -  :red:`DELETE`
    *  -  **API Location**
       -  `https://wwwapi.shufflrr.com/api/files/{id}`__
-	     Where **{id}** is the File ID of the File you wish to remove
+	     Where {id} is the File ID of the File you wish to remove
    *  -  **Swagger documentation location**
       -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Delete_0`__
 
@@ -799,7 +799,7 @@ To get information on all the slides of a specific presentation use the Presenta
       -  :blue:`GET`
    *  -  **API Location**
       -  `https://wwwapi.shufflrr.com/api/presentations/{id}/slides`__
-	     Where **{id}** is the File ID of the Presentation you wish to get the slides of
+	     Where {id} is the File ID of the Presentation you wish to get the slides of
    *  -  **Swagger documentation location**
       -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Presentations/Presentations_Slides`__
 
