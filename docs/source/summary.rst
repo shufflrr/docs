@@ -281,17 +281,18 @@ Get All Folders
 
 To get a list of all Folders in the Shufflrr portal use the All Folders API.
 
-This is a :blue:`GET` method
-
-The All Folders API can be found at:
-
-`https://wwwapi.shufflrr.com/api/folders/all`__
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :blue:`GET`  
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/folders/all`__  
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_All`__
 
 .. __: https://wwwapi.shufflrr.com/api/folders/all
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_All`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_All
 
@@ -302,17 +303,18 @@ Create Folder
 
 To create a new folder in Shufflrr call the Create Folder API.  Make sure to set the parentFolderId to the Folder ID that want the new folder created in.
 
-This is a :green:`POST` method
-
-The Create Folder API can be found at:
-
-`https://wwwapi.shufflrr.com/api/folders`__
-
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :green:`POST` 
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/folders`__  
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Post`__
+	  
 .. __: https://wwwapi.shufflrr.com/api/folders
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Post`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Post
 
@@ -372,38 +374,40 @@ Get Folder Contents
 
 To get information all of the contents of a folder (sub folders and files) call the Get Folder Contents API.
 
-This is a :blue:`GET` method
-
-The Get Folder Contents API can be found at:
-
-`https://wwwapi.shufflrr.com/api/folders/{id}/contents`__
-
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :blue:`GET` 
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/folders/{id}/contents`__  
+          Where **{id}** is the Folder ID to get the contents of
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Contents`__
+	  
 .. __: https://wwwapi.shufflrr.com/api/folders/{id}/contents
 
-Where **{id}** is the Folder ID to get the contents of
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Contents`__
-
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Contents
+
 
 Update existing folder name
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To rename an existing folder to another name use the folders API.  The ID is the ID of the folder you are looking to rename.
 
-This is a :orange:`PUT` method.
-
-The folders API can be found at:
-
-`https://wwwapi.shufflrr.com/api/folders`__
-
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :orange:`PUT` 
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/folders`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Put`__
+	  
 .. __: https://wwwapi.shufflrr.com/api/folders
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Put`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Put
 
@@ -424,17 +428,19 @@ Move folder
 
 To move a folder and all its contents use the Folder Move API.  You will need to replace the {id} in the URL path with ID of the folder you want to move.  The request body will contain just the ID of the folder you want the folder you are moving to be under.  
 
-This is a :green:`POST` method
-
-The move folder API can be found at:
-
-`https://wwwapi.shufflrr.com/api/folders/{id}/move`__
-
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :green:`POST` 
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/folders/{id}/move`__
+	      Where **{id}** is the Folder ID of the folder to move
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Move`__
+	  
 .. __: https://wwwapi.shufflrr.com/api/folders/{id}/move
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Move`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Move
 
@@ -464,17 +470,19 @@ Remove folder
 
 To remove a folder and all its contents use the folder delete method.  The id in the path will be the ID of the folder you want to remove (retrieved from one of the previous calls in Get list of folders section).
 
-This is a :red:`DELETE` method
-
-The delete folder API can be found at:
-
-`https://wwwapi.shufflrr.com/api/folders/{id}`__
-
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :red:`DELETE`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/folders/{id}`__
+	     Where **{id}** is the Folder ID of the folder to remove
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Delete`__
+	  
 .. __: https://wwwapi.shufflrr.com/api/folders/{id}
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Delete`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Delete
 
@@ -507,17 +515,19 @@ To add a new file (presentation, video, images, documents, etc) use the folder u
 
 Shufflrr uses the Windows method of file management.  When a file is uploaded to a folder and it has the same filename and extension it will be considered an update to the file.  For updating an existing file this same method will be used to upload the file to update to the same folder it exists in with the same filename.
 
-This is a :green:`POST` method
-
-The folder upload API can be found at:
-
-`https://wwwapi.shufflrr.com/api/folders/{id}/upload`__
-
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :green:`POST`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/folders/{id}/upload`__
+	     Where **{id}** is the Folder ID of the folder to upload to
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Upload`__
+	  
 .. __: https://wwwapi.shufflrr.com/api/folders/{id}/upload
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Upload`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Folders/Folders_Upload
 
@@ -574,17 +584,18 @@ Once the file is processed in Shufflrr, it will then get it’s uploadedFileId. 
 
 The file information will remain in the queue for 24 hours or until a user Dismisses the file from the queue in the Shufflrr UI.
 
-This is a :blue:`GET` method
-
-The Get Actions Queue API can be found at:
-
-`https://wwwapi.shufflrr.com/api/actionsqueue`__
-
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :blue:`GET`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/actionsqueue`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/ActionsQueue/ActionsQueue_Get`__
+	  
 .. __: https://wwwapi.shufflrr.com/api/actionsqueue
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/ActionsQueue/ActionsQueue_Get`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/ActionsQueue/ActionsQueue_Get
 
@@ -595,17 +606,18 @@ Get list of files
 
 To get a list of all files (presentation, video, images, documents, etc) use the get files API.  Sending the request without any parameters will return all the files in the portal.
 
-This is a :blue:`GET` method
-
-The get files API can be found at:
-
-`https://wwwapi.shufflrr.com/api/files`__
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :blue:`GET`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/files`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Get`__
 
 .. __: https://wwwapi.shufflrr.com/api/files
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Get`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Get
 
@@ -616,17 +628,19 @@ Get File
 
 To get the detailed information on a specific file call the Get File API.  Replace the {id} in the url below with the file id that you want to get the information on.
 
-This is a :blue:`GET` method.
-
-The get file API can be found at:
-
-`https://wwwapi.shufflrr.com/api/files/{id}`__
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :blue:`GET`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/files/{id}`__
+	     Where **{id}** is the File ID of the file you want to get
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Get_0`__
 
 .. __: https://wwwapi.shufflrr.com/api/files/{id}
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Get_0`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Get_0
 
@@ -635,17 +649,18 @@ Update information on an existing file
 
 To update information on a file that was previously uploaded (File Name & Description), use the update files API.  The ID in the Body of the request is the ID of the file to change the information on.  
 
-This is a :orange:`PUT` method.
-
-The update files API can be found at:
-
-`https://wwwapi.shufflrr.com/api/files`__
-
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :orange:`PUT`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/files`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Put`__
+	  
 .. __: https://wwwapi.shufflrr.com/api/files
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Put`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Put
 
@@ -667,17 +682,18 @@ Move a file
 
 To move a file into a different folder, use the move files API 
 
-This is a :green:`POST` method.
-
-The move files API can be found at:
-
-`https://wwwapi.shufflrr.com/api/files/move`__
-
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :green:`POST`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/files/move`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Move`__
+	  
 .. __: https://wwwapi.shufflrr.com/api/files/move
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Move`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Move
 
@@ -705,17 +721,19 @@ Download a file
 
 To download a file from Shufflrr use the files download API.  Replace the {id} in the URL below with the ID of the file you want to download.
 
-This is a :blue:`GET` method.
-
-The files download API can be found at:
-
-`https://wwwapi.shufflrr.com/api/files/{id}/download`__
-
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :blue:`GET`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/files/{id}/download`__
+	     Where **{id}** is the File ID of the file you wish to download
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Download`__
+	  
 .. __: https://wwwapi.shufflrr.com/api/files/{id}/download
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Download`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Download
 
@@ -726,17 +744,19 @@ To remove a file from Shufflrr, use the delete file API.  Replace the {id} in th
 
 If you wish to remove the file immediately send in an empty request body.  If you wish to set an expiry date on the file instead, set the fields value in the request to the ID of the file (or a comma separated list of files) you want to set an expiry Date on and set the expiryDate value to the date you want Shufflrr to automatically expire the file(s) on.  
 
-This is a :red:`DELETE` method
-
-The delete files API can be found at:
-
-`https://wwwapi.shufflrr.com/api/files/{id}`__
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :red:`DELETE`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/files/{id}`__
+	     Where **{id}** is the File ID of the File you wish to remove
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Delete_0`__
 
 .. __: https://wwwapi.shufflrr.com/api/files/{id}
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Delete_0`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Files/Files_Delete_0
 
@@ -771,16 +791,18 @@ Presentation Slides
 
 To get information on all the slides of a specific presentation use the Presentation Slides API.  Replace the {id} in the url below with the file id of the presentation you want the slide information of.
 
-This is a :blue:`GET` method.
-
-The get file API can be found at:
-
-`https://wwwapi.shufflrr.com/api/presentations/{id}/slides`__
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :blue:`GET`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/presentations/{id}/slides`__
+	     Where **{id}** is the File ID of the Presentation you wish to get the slides of
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Presentations/Presentations_Slides`__
 
 .. __: https://wwwapi.shufflrr.com/api/presentations/{id}/slides
-
-Documentation can be found at:
-
-`https://wwwapi.shufflrr.com/api/docs/ui/index#!/Presentations/Presentations_Slides`__
 
 .. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Presentations/Presentations_Slides
