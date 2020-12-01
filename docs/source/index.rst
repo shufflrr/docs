@@ -11,4 +11,3 @@ outlined in this documentation.
    :caption: Contents:
 
    summary
-
