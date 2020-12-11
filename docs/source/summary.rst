@@ -143,12 +143,36 @@ For other calls (puts, posts, deletes) the following headers should be set:
 +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | X-Requested-With                 | XMLHttpRequest                                                                                                                     |
 +----------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| Content-Length                   | <000>                                                                                                                              |
++----------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
 .. __: https://wwwapi.shufflrr.com
 
 .. __: https://wwwapi.shufflrr.com
 
 .. __: https://wwwapi.shufflrr.com/Shufflrr
+
+Where **<000>** is the length of the request body
+
+**Examples** of Content-Length: 
+
+::
+
+   {} 
+   
+Would be a Content-Length of 2
+
+::
+
+   {
+    "fileIds": [
+     11111111
+    ],
+    "expiryDate": "2020-12-27T22:39:59.678Z",
+    "clearExpiryDate": false
+   }
+   
+Would be a Content-Length of 107
 
 
 Body
