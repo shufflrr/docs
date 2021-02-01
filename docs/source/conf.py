@@ -8,8 +8,7 @@ author = 'Shufflrr'
 
 release = '0.0.1'
 
-extensions = [
-]
+extensions = ['sphinx.ext.autosectionlabel']
 
 templates_path = ['_templates']
 
