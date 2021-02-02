@@ -1052,7 +1052,7 @@ $$$$$$$$$$$$$
 
 
 ActionsQueue APIs
---------------
+------------------
 
 The Action Queue in Shufflrr is used for processing that generally takes a longer period of time and needs to be queued up for processing asynchronously.  This is for items such as processing uploaded files, slide updating, applying permission changes to folders, etc. 
 
@@ -1127,16 +1127,392 @@ Sample Unsuccessful Response - All other
 
 
 
+Builders APIs
+--------------
+
+Builders are a wizard that can be used to make To learn what a builder is, please refer to the |location_link|
+
+.. |location_link| raw:: html
+
+   <a href="https://shufflrr.com/assets/userguide/ch11-00-presentation-builder.html" target="_blank">builder documentation in the Shufflrr User Guide</a>
+
+Get All Builders
+~~~~~~~~~~~~~~~~~
+
+This API gets a list of all builders in the Shufflrr portal
+
+ 
+
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :blue:`GET`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/builders`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Get`__
+
+.. __: https://wwwapi.shufflrr.com/api/builders
+
+.. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Get
+
+
+Sample Response - 0 Builders
+#############################
+
+::
+
+ []
+
+
+
+Create New Builder
+~~~~~~~~~~~~~~~~~~~
+
+This API allows you to add a new builder to the Shufflrr portal
+
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :green:`POST`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/builders`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Post`__
+
+.. __: https://wwwapi.shufflrr.com/api/builders
+
+.. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Post
+
+Sample Request Body
+####################
+
+::
+
+ {
+  "title": "BuilderTitle",
+  "loopingVideoId": 0,
+  "titleSlideId": 0,
+  "dataFields": [
+    "string"
+  ],
+  "accessPrincipalIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "slideLimit": 0
+ }
+
+Where:
+
+- **title** is the title of the builder
+- **loopingVideoId** is the fileId of the Video to use for the looping video.  If none, set to null.
+- **titleSlideIs** is the ID of the slide to use as the first slide in each presentation created using the builder.  It is added to the slide tray by default when a new presentation is being created using the builder.  If you don't want to define one, set to null.
+- **dataFiles** is a comma sperated list of dataFileds to define.  If you do not want to define any then send in an empty array (ie []).
+- **accessPrincipalIds** is a comma seperated list of IDs for users and groups to give access to the builder.  If you do not want to define any then send in an empty array (ie []).
+- **slideLimit** is the max number of slides to allow someone to add to their slide try using the builder.  To set to unlimited, set value to 0. 
+
+.. note::
+
+ Foundation Presentation(s) are not assigned in this call.  They are added in a subsequent call to either the Add or Update Presentations to a Builder API (below) 
+ 
+Sample Successful Response
+###########################
+
+::
+
+ {
+  "id":0000,
+  "title":"BuilderTitle",
+  "loopingVideoId":00000000,
+  "loopingVideo":null,
+  "titleSlideId":00000000,
+  "titleSlide":null,
+  "access":[{"groupType":"AllUsers","description":"Contains every user on the site","principalType":"Group","id":"00000000-0000-0000-0000-000000000000","name":"All Users","createdDate":"2020-08-14T14:52:51.177","roles":"CreateNewPPTX, Upload, DownloadPresentationOriginal, DownloadPresentationPPSX, DownloadPresentationPDF, DownloadPresentationPDFNotes, DownloadImageOriginal, DownloadImageJPG, DownloadVideoOriginal, DownloadVideoH264, DownloadDocumentOriginal, DownloadDocumentPDF, FileSharing","portalId":0000000,"deleted":false}],
+  "slideLimit":0,
+  "dataFields":[],
+  "presentations":[]
+ }
+
+Sample Unsuccessful Response
+############################
+
+::
+
+ {
+  "message": "An error has occurred."
+ }
+
+
+Delete a Builder
+~~~~~~~~~~~~~~~~~
+
+This API allows you to delete a builder from the Shufflrr portal
+
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :red:`DELETE`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/builders/{id}`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Delete`__
+
+.. __: https://wwwapi.shufflrr.com/api/builders/{id}
+
+.. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Delete
+
+Where **{id}** in the above API Location is the Builder ID to be deleted
+
+Sample Successful Response
+###########################
+
+Status Code 
+$$$$$$$$$$$$
+
+204 (No Content)
+
+Sample Unsuccessful Response
+############################
+
+Status Code
+$$$$$$$$$$$$
+
+403 (Forbidden)
+
+Response Body
+$$$$$$$$$$$$$$
+
+::
+
+ Attempted to perform an unauthorized operation.
 
 
 
 
 
+Get Builder Details
+~~~~~~~~~~~~~~~~~~~~
+
+This API allows you to retrieve the details of a specific builder from the Shufflrr portal
+
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :blue:`GET`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/builders/{id}`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Get_0`__
+
+.. __: https://wwwapi.shufflrr.com/api/builders/{id}
+
+.. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Get_0
+
+Where **{id}** in the above API Location is the ID of the Builder to be deleted
+
+Sample Successful Response
+###########################
+
+::
+
+ {
+  "loopingVideo":null,
+  "titleSlide":{"id":00000000,"baseFileId":00000000,"baseSlideNumber":1,"slideType":"Presentation","createdDate":"2020-10-13T13:42:33.77","modifiedDate":"2020-10-13T13:42:33.77","slideHistoryId":0000000,"version":1,"thumbnailSmallSize":0000,"thumbnailMediumSize":00000,"thumbnailLargeSize":000000,"apiUrl":"https://wwwapi.shufflrr.com/api/slides/00000000","thumbnailSmallUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailsmall","thumbnailMediumUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailmedium","thumbnailLargeUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnaillarge","commentCount":0,"likeCount":0,"isLikedByCurrentUser":false,"isFollowedByCurrentUser":false,"likedBy":[],"title":"","notes":""},
+  "access":[{"groupType":"AllUsers","description":"Contains every user on the site","principalType":"Group","id":"00000000-0000-0000-0000-000000000000","name":"All Users","createdDate":"2020-08-14T14:52:51.177","roles":"CreateNewPPTX, Upload, DownloadPresentationOriginal, DownloadPresentationPPSX, DownloadPresentationPDF, DownloadPresentationPDFNotes, DownloadImageOriginal, DownloadImageJPG, DownloadVideoOriginal, DownloadVideoH264, DownloadDocumentOriginal, DownloadDocumentPDF, FileSharing","portalId":0000000,"deleted":false}],
+  "id":0000,
+  "title":"Test Builder",
+  "loopingVideoId":null,
+  "titleSlideId":00000000,
+  "slideLimit":0,
+  "dataFields":["hi","hello","blue"],
+  "presentations":[{"file":{"slide":{"createdDate":"2020-10-13T13:42:33.24","modifiedDate":"2021-02-02T14:54:20.967","isLikedByCurrentUser":false,"isFollowedByCurrentUser":true,"likedBy":[],"title":"my test presentation","notes":null,"baseSlideNumber":1,"slideType":"File","fileSlideType":"Presentation","thumbnailSmallSize":0000,"thumbnailMediumSize":00000,"thumbnailLargeSize":000000,"id":00000000,"baseFileId":00000000,"slideHistoryId":0000000,"version":1,"apiUrl":"https://wwwapi.shufflrr.com/api/slides/00000000","thumbnailSmallUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailsmall","thumbnailMediumUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailmedium","thumbnailLargeUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnaillarge","commentCount":0,"likeCount":0},"slideMaster":null,"slideMasterId":null,"slideCount":4,"fileType":"Presentation","apiUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000","downloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/download","pdfSize":2042199,"pdfEmbedUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/pdf","pdfDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/pdf?download=true","pdfNotesSize":1421649,"pdfNotesEmbedUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/pdfnotes","pdfNotesDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/pdfnotes?download=true","html5Url":"https://wwwapi.shufflrr.com/api/presentations/00000000/html/index.html","html5Processed":"EditorProcessed","ppsxSize":2485261,"ppsxDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/ppsx?download=true","reviewSlideUpdates":false,"reviewChildSlideUpdates":false,"replacementValues":null,"editSessionId":null,"author":"","size":2485111,"extension":"pptx","fileCreatedDate":"2020-10-13T13:41:30.247","fileModifiedDate":"2020-10-13T13:41:38.78","expiryDate":null,"fileHistoryId":000000,"version":1,"isCurrentVersion":false,"commentCount":0,"likeCount":0,"isLikedByCurrentUser":false,"isFollowedByCurrentUser":true,"metadata":[{"metadataTypeId":0000,"value":""},{"metadataTypeId":0001,"value":""},{"metadataTypeId":0002,"value":["","value1","value2"]},{"metadataTypeId":0003,"value":""},{"metadataTypeId":0004,"value":""},{"metadataTypeId":0005,"value":["","one"]},{"metadataTypeId":0006,"value":["","Value3","Value4"]}],"likedBy":[],"slideId":00000000,"processingStatus":"Processed","thumbnailSmallUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnailsmall","thumbnailMediumUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnailmedium","thumbnailLargeUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnaillarge","thumbnailSmallDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnailsmall?download=true","thumbnailMediumDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnailmedium?download=true","thumbnailLargeDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnaillarge?download=true","thumbnailSmallSize":6892,"thumbnailMediumSize":23279,"thumbnailLargeSize":168581,"embedUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/embed","id":00000000,"name":"my test presentation.pptx","description":null,"createdDate":"2020-10-13T13:42:33.24","modifiedDate":"2021-02-02T14:54:20.967","createdById":"00000000-0000-0000-0000-000000000000","createdByName":"wwwapi Admin","modifiedById":"00000000-0000-0000-0000-000000000000","modifiedByName":"wwwapi Admin","parentFolderId":00000000,"portalId":0000000,"isFolder":false,"deleted":true}, "id":00000, "builderId":0000,  "fileId":00000000, "parentBuilderPresentationId":null, "presentations":[], "insertBeforeSlideNumber":-1}]
+ }
+
+Sample Unsuccessful Response
+############################
+
+Status Code
+$$$$$$$$$$$$
+
+403 (Forbidden)
+
+Response Body
+$$$$$$$$$$$$$$
+
+::
+
+ Attempted to perform an unauthorized operation.
 
 
 
 
 
+Update Builder Details
+~~~~~~~~~~~~~~~~~~~~~~~
+
+This API allows you to update the details of a specific builder in the Shufflrr portal
+
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :orange:`PUT`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/builders/{id}`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Put`__
+
+.. __: https://wwwapi.shufflrr.com/api/builders/{id}
+
+.. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Put
+
+Where **{id}** in the above API Location is the ID of the Builder to be updated
+
+Sample Request Body
+####################
+
+::
+
+ {
+  "title": "BuilderTitle",
+  "loopingVideoId": 0,
+  "titleSlideId": 0,
+  "dataFields": [
+    "string"
+  ],
+  "accessPrincipalIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "slideLimit": 0
+ }
+
+Where:
+
+- **title** is the title of the builder
+- **loopingVideoId** is the fileId of the Video to use for the looping video.  If none, set to null.
+- **titleSlideIs** is the ID of the slide to use as the first slide in each presentation created using the builder.  It is added to the slide tray by default when a new presentation is being created using the builder.  If you don't want to define one, set to null.
+- **dataFiles** is a comma sperated list of dataFileds to define.  If you do not want to define any then send in an empty array (ie []).
+- **accessPrincipalIds** is a comma seperated list of IDs for users and groups to give access to the builder.  If you do not want to define any then send in an empty array (ie []).
+- **slideLimit** is the max number of slides to allow someone to add to their slide try using the builder.  To set to unlimited, set value to 0. 
+
+.. note::
+
+ Foundation Presentation(s) are not assigned in this call.  They are added in a subsequent call to either the Add or Update Presentations to a Builder API (below) 
+ 
+Sample Successful Response
+###########################
+
+::
+
+ {
+  "loopingVideo":null,
+  "titleSlide":{"id":00000000,"baseFileId":00000000,"baseSlideNumber":1,"slideType":"Presentation","createdDate":"2020-10-13T13:42:33.77","modifiedDate":"2020-10-13T13:42:33.77","slideHistoryId":0000000,"version":1,"thumbnailSmallSize":0000,"thumbnailMediumSize":00000,"thumbnailLargeSize":000000,"apiUrl":"https://wwwapi.shufflrr.com/api/slides/00000000","thumbnailSmallUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailsmall","thumbnailMediumUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailmedium","thumbnailLargeUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnaillarge","commentCount":0,"likeCount":0,"isLikedByCurrentUser":false,"isFollowedByCurrentUser":false,"likedBy":[],"title":"","notes":""},
+  "access":[{"groupType":"AllUsers","description":"Contains every user on the site","principalType":"Group","id":"00000000-0000-0000-0000-000000000000","name":"All Users","createdDate":"2020-08-14T14:52:51.177","roles":"CreateNewPPTX, Upload, DownloadPresentationOriginal, DownloadPresentationPPSX, DownloadPresentationPDF, DownloadPresentationPDFNotes, DownloadImageOriginal, DownloadImageJPG, DownloadVideoOriginal, DownloadVideoH264, DownloadDocumentOriginal, DownloadDocumentPDF, FileSharing","portalId":0000000,"deleted":false}],
+  "id":0000,
+  "title":"Test Builder",
+  "loopingVideoId":null,
+  "titleSlideId":00000000,
+  "slideLimit":0,
+  "dataFields":["hi","hello","blue"],
+  "presentations":[{"file":{"slide":{"createdDate":"2020-10-13T13:42:33.24","modifiedDate":"2021-02-02T14:54:20.967","isLikedByCurrentUser":false,"isFollowedByCurrentUser":true,"likedBy":[],"title":"my test presentation","notes":null,"baseSlideNumber":1,"slideType":"File","fileSlideType":"Presentation","thumbnailSmallSize":0000,"thumbnailMediumSize":00000,"thumbnailLargeSize":000000,"id":00000000,"baseFileId":00000000,"slideHistoryId":0000000,"version":1,"apiUrl":"https://wwwapi.shufflrr.com/api/slides/00000000","thumbnailSmallUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailsmall","thumbnailMediumUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailmedium","thumbnailLargeUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnaillarge","commentCount":0,"likeCount":0},"slideMaster":null,"slideMasterId":null,"slideCount":4,"fileType":"Presentation","apiUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000","downloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/download","pdfSize":2042199,"pdfEmbedUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/pdf","pdfDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/pdf?download=true","pdfNotesSize":1421649,"pdfNotesEmbedUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/pdfnotes","pdfNotesDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/pdfnotes?download=true","html5Url":"https://wwwapi.shufflrr.com/api/presentations/00000000/html/index.html","html5Processed":"EditorProcessed","ppsxSize":2485261,"ppsxDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/ppsx?download=true","reviewSlideUpdates":false,"reviewChildSlideUpdates":false,"replacementValues":null,"editSessionId":null,"author":"","size":2485111,"extension":"pptx","fileCreatedDate":"2020-10-13T13:41:30.247","fileModifiedDate":"2020-10-13T13:41:38.78","expiryDate":null,"fileHistoryId":000000,"version":1,"isCurrentVersion":false,"commentCount":0,"likeCount":0,"isLikedByCurrentUser":false,"isFollowedByCurrentUser":true,"metadata":[{"metadataTypeId":0000,"value":""},{"metadataTypeId":0001,"value":""},{"metadataTypeId":0002,"value":["","value1","value2"]},{"metadataTypeId":0003,"value":""},{"metadataTypeId":0004,"value":""},{"metadataTypeId":0005,"value":["","one"]},{"metadataTypeId":0006,"value":["","Value3","Value4"]}],"likedBy":[],"slideId":00000000,"processingStatus":"Processed","thumbnailSmallUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnailsmall","thumbnailMediumUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnailmedium","thumbnailLargeUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnaillarge","thumbnailSmallDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnailsmall?download=true","thumbnailMediumDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnailmedium?download=true","thumbnailLargeDownloadUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/thumbnaillarge?download=true","thumbnailSmallSize":6892,"thumbnailMediumSize":23279,"thumbnailLargeSize":168581,"embedUrl":"https://wwwapi.shufflrr.com/api/presentations/00000000/embed","id":00000000,"name":"my test presentation.pptx","description":null,"createdDate":"2020-10-13T13:42:33.24","modifiedDate":"2021-02-02T14:54:20.967","createdById":"00000000-0000-0000-0000-000000000000","createdByName":"wwwapi Admin","modifiedById":"00000000-0000-0000-0000-000000000000","modifiedByName":"wwwapi Admin","parentFolderId":00000000,"portalId":0000000,"isFolder":false,"deleted":true}, "id":00000, "builderId":0000,  "fileId":00000000, "parentBuilderPresentationId":null, "presentations":[], "insertBeforeSlideNumber":-1}]
+ }
+
+Sample Unsuccessful Response
+############################
+
+Response Code
+$$$$$$$$$$$$$
+
+403 (Forbidden)
+
+Response Body
+$$$$$$$$$$$$$$
+
+::
+
+ Attempted to perform an unauthorized operation.
+ 
+ 
+ 
+Add foundation Presentation(s) to Builder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This API allows you to add one or more foundation presenation(s) to a specific builder in the Shufflrr portal
+
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :green:`POST`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/builders/{id}/presentations`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Presentations`__
+
+.. __: https://wwwapi.shufflrr.com/api/builders/{id}/presentations
+
+.. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Presentations
+
+Where **{id}** in the above API Location is the ID of the Builder to add the foundation presentation(s) to
+
+Sample Request Body
+####################
+
+::
+
+ [
+  {"fileId":00000000,"presentations":[],"insertBeforeSlideNumber":-1},
+  {"fileId":00000001,"presentations":[],"insertBeforeSlideNumber":-1}
+ ]
+
+ 
+Sample Successful Response
+###########################
+
+::
+
+ [
+  {"id":00000,"builderId":0000,"fileId":00000000,"file":{"slide":{"createdDate":"2020-12-04T14:46:15.933","modifiedDate":"2020-12-04T14:46:17.12","isLikedByCurrentUser":false,"isFollowedByCurrentUser":true,"likedBy":[],"title":"abc-icon","notes":null,"baseSlideNumber":1,"slideType":"File","fileSlideType":"Image","thumbnailSmallSize":10188,"thumbnailMediumSize":22964,"thumbnailLargeSize":96369,"id":00000000,"baseFileId":00000000,"slideHistoryId":0000000,"version":1,"apiUrl":"https://wwwapi.shufflrr.com/api/slides/00000000","thumbnailSmallUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailsmall","thumbnailMediumUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailmedium","thumbnailLargeUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnaillarge","commentCount":0,"likeCount":0},"width":1128,"height":1128,"fileType":"Image","apiUrl":"https://wwwapi.shufflrr.com/api/files/00000000","author":null,"size":60296,"extension":"png","fileCreatedDate":"2020-12-04T14:46:13.32","fileModifiedDate":"2020-12-04T14:46:13.323","expiryDate":null,"fileHistoryId":000000,"version":1,"isCurrentVersion":true,"commentCount":0,"likeCount":0,"isLikedByCurrentUser":false,"isFollowedByCurrentUser":true,"metadata":[{"metadataTypeId":0000,"value":""},{"metadataTypeId":0001,"value":""},{"metadataTypeId":0002,"value":["","Value1","Value2"]},{"metadataTypeId":003,"value":""},{"metadataTypeId":0004,"value":""},{"metadataTypeId":0005,"value":["","one"]},{"metadataTypeId":0006,"value":["","Value3","Value4"]}],"likedBy":[],"slideId":00000000,"processingStatus":"Processed","thumbnailSmallUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnailsmall","thumbnailMediumUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnailmedium","thumbnailLargeUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnaillarge","thumbnailSmallDownloadUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnailsmall?download=true","thumbnailMediumDownloadUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnailmedium?download=true","thumbnailLargeDownloadUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnaillarge?download=true","thumbnailSmallSize":10188,"thumbnailMediumSize":22964,"thumbnailLargeSize":96369,"downloadUrl":"https://wwwapi.shufflrr.com/api/files/00000000/download","embedUrl":"https://wwwapi.shufflrr.com/api/files/00000000/embed","id":00000000,"name":"abc-icon.png","description":null,"createdDate":"2020-12-04T14:46:15.933","modifiedDate":"2020-12-04T14:46:17.12","createdById":"00000000-0000-0000-0000-000000000000","createdByName":"wwwapi Admin","modifiedById":"00000000-0000-0000-0000-000000000000","modifiedByName":"wwwapi Admin","parentFolderId":00000000,"portalId":0000000,"isFolder":false,"deleted":false},"parentBuilderPresentationId":null,"presentations":[],"insertBeforeSlideNumber":-1},
+  {"id":00000,"builderId":0000,"fileId":00000000,"file":{"slide":{"createdDate":"2020-12-01T16:05:58.877","modifiedDate":"2020-12-01T16:06:00.253","isLikedByCurrentUser":false,"isFollowedByCurrentUser":true,"likedBy":[],"title":"Christmas 2019-1","notes":null,"baseSlideNumber":1,"slideType":"File","fileSlideType":"Image","thumbnailSmallSize":16715,"thumbnailMediumSize":52458,"thumbnailLargeSize":307648,"id":00000000,"baseFileId":00000000,"slideHistoryId":0000000,"version":1,"apiUrl":"https://wwwapi.shufflrr.com/api/slides/00000000","thumbnailSmallUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailsmall","thumbnailMediumUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnailmedium","thumbnailLargeUrl":"https://wwwapi.shufflrr.com/api/slides/00000000/thumbnaillarge","commentCount":0,"likeCount":0},"width":2592,"height":1944,"fileType":"Image","apiUrl":"https://wwwapi.shufflrr.com/api/files/00000000","author":null,"size":2189686,"extension":"JPG","fileCreatedDate":"2020-12-01T16:05:53.197","fileModifiedDate":"2020-12-01T16:05:53.66","expiryDate":null,"fileHistoryId":000000,"version":1,"isCurrentVersion":true,"commentCount":0,"likeCount":0,"isLikedByCurrentUser":false,"isFollowedByCurrentUser":true,"metadata":[{"metadataTypeId":0000,"value":""},{"metadataTypeId":0001,"value":""},{"metadataTypeId":0002,"value":["","Value1","Value2"]},{"metadataTypeId":003,"value":""},{"metadataTypeId":004,"value":""},{"metadataTypeId":0005,"value":["","one"]},{"metadataTypeId":0006,"value":["","Value3","Value4"]}],"likedBy":[],"slideId":00000000,"processingStatus":"Processed","thumbnailSmallUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnailsmall","thumbnailMediumUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnailmedium","thumbnailLargeUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnaillarge","thumbnailSmallDownloadUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnailsmall?download=true","thumbnailMediumDownloadUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnailmedium?download=true","thumbnailLargeDownloadUrl":"https://wwwapi.shufflrr.com/api/files/00000000/thumbnaillarge?download=true","thumbnailSmallSize":16715,"thumbnailMediumSize":52458,"thumbnailLargeSize":307648,"downloadUrl":"https://wwwapi.shufflrr.com/api/files/00000000/download","embedUrl":"https://wwwapi.shufflrr.com/api/files/00000000/embed","id":00000000,"name":"Christmas 2019-1.JPG","description":null,"createdDate":"2020-12-01T16:05:58.877","modifiedDate":"2020-12-01T16:06:00.253","createdById":"00000000-0000-0000-0000-000000000000","createdByName":"wwwapi Admin","modifiedById":"00000000-0000-0000-0000-000000000000","modifiedByName":"wwwapi Admin","parentFolderId":000000000,"portalId":0000000,"isFolder":false,"deleted":false},"parentBuilderPresentationId":null,"presentations":[],"insertBeforeSlideNumber":-1}
+ ]
+
+Sample Unsuccessful Response
+############################
+
+Response Code
+$$$$$$$$$$$$$
+
+403 (Forbidden)
+
+Response Body
+$$$$$$$$$$$$$$
+
+::
+
+ Attempted to perform an unauthorized operation.
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 
 Reporting APIs
