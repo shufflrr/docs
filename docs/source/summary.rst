@@ -1465,6 +1465,11 @@ This API allows you to add one or more foundation presenation(s) to a specific b
 
 Where **{id}** in the above API Location is the ID of the Builder to add the foundation presentation(s) to
 
+.. note::
+
+ If you want to delete all previously added foundation presentations from a builder before adding in the new presentations, append the query parameter **?removeExisting=true** to the end of the API URL.  This is set to False by default.
+
+
 Sample Request Body
 ####################
 
@@ -1475,6 +1480,15 @@ Sample Request Body
   {"fileId":00000001,"presentations":[],"insertBeforeSlideNumber":-1}
  ]
 
+Where:
+
+- **fileId** is the file you are adding
+- **presentations** is a comma seperated list of founder presentations you want to add this file as a child presentation to.  To have this file be a root foundation presentation (not a child) then send an empty array (ie. [])
+- **insertBeforeSlideNumber** is only used when presentations is not empty.  This is the slide Number of the parent presentation that you want the file being added to get added before when it is added to the slide tray (when someone is building the presentation using this builder).
+ 
+.. note ::
+
+ insertBeforeSlideNumber has to be 1 or greater.  You can also set it to -1 To set it to go to the end of the contents of the Builder Foundation Presentation you are linking to. 
  
 Sample Successful Response
 ###########################
@@ -1504,11 +1518,237 @@ $$$$$$$$$$$$$$
   
  
  
+Remove foundation Presentation(s) from Builder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This API allows you to remove a foundation presenation from a specific builder in the Shufflrr portal
+
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :red:`DELETE`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/builders/presentations/{id}`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Presentations_0`__
+
+.. __: https://wwwapi.shufflrr.com/api/builders/presentations/{id}
+
+.. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Presentations_0
+
+Where **{id}** in the above API Location is the ID of foundation presentation that was previously added to a builder.  This is the **id** element of the specific **presentations** element when retrieving a **builder** element.
+
+ 
+Sample Successful Response
+###########################
+
+Response Code
+$$$$$$$$$$$$$
+
+204 (No Content)
+
+Sample Unsuccessful Response
+############################
+
+Response Code
+$$$$$$$$$$$$$
+
+400 (Bad Request)
+
+Response Body
+$$$$$$$$$$$$$$
+
+::
+
+ Invalid Builder PresentationId 0000
+
+Where **0000** is the builder presentation ID sent in the URL 
  
  
  
  
+Update foundation Presentation(s) location in Builder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This API allows you to update the location of a child foundation presenation in a specific builder in the Shufflrr portal.  When the child presentation is linked to a parent founder presentation, the user will not be allowed to change the location of the slides of the child presentation if they choose to add them to the slide tray.
+
+.. list-table:: 
+   :header-rows: 0
+   :widths: 10 70
+   
+   *  -  **Method type**
+      -  :orange:`PUT`
+   *  -  **API Location**
+      -  `https://wwwapi.shufflrr.com/api/builders/presentations/{id}`__
+   *  -  **Swagger documentation location**
+      -  `https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Presentations_0_1`__
+
+.. __: https://wwwapi.shufflrr.com/api/builders/presentations/{id}
+
+.. __: https://wwwapi.shufflrr.com/api/docs/ui/index#!/Builders/Builders_Presentations_0_1
+
+Where **{id}** in the above API Location is the ID of foundation presentation that was previously added to a builder as a child to another foundation presentation.  This is the **id** element of the specific **presentations** element when retrieving a **builder** element and will have the element parentBuilderPresentationId not set to null.
+
+This will link the file (to be specified in the request body) to the foundation presentation (specified as the {id} in the URL) and will allow the user using the builder to add the additional file to the slide tray at the location specified (in the request body).
+
+.. note ::
+
+ This action cannot be performed on foundation presentations that have parentBuilderPresentationId set to null as these are root founder presentations.
+
  
+Sample Successful Response
+###########################
+
+Sample Request Body
+####################
+
+::
+
+ {
+  "id": 0,
+  "insertBeforeSlideNumber": 0
+ }
+ 
+Where:
+
+- **id** is the ID of the child Foundation Presentation (same as specified in the URL)
+- **insertBeforeSlideNumber** is the slide number in the Builder Foundation Presentation that you want the contents of this presentation added to the tray in front of.  
+
+.. note ::
+
+ insertBeforeSlideNumber has to be 1 or greater.  You can also set it to -1 To set it to go to the end of the contents of the Builder Foundation Presentation you are linking to.
+
+ 
+Sample Successful Response
+############################
+
+::
+
+ {
+  "id": 0,
+  "builderId": 0,
+  "fileId": 0,
+  "file": {
+    "author": "string",
+    "size": 0,
+    "extension": "string",
+    "fileCreatedDate": "2021-01-30T19:15:50.321Z",
+    "fileModifiedDate": "2021-01-30T19:15:50.321Z",
+    "expiryDate": "2021-01-30T19:15:50.321Z",
+    "fileHistoryId": 0,
+    "version": 0,
+    "isCurrentVersion": true,
+    "commentCount": 0,
+    "likeCount": 0,
+    "isLikedByCurrentUser": true,
+    "isFollowedByCurrentUser": true,
+    "metadata": [
+      {
+        "metadataTypeId": 0,
+        "value": {}
+      }
+    ],
+    "likedBy": [
+      "string"
+    ],
+    "slideId": 0,
+    "slide": {
+      "createdDate": "2021-01-30T19:15:50.321Z",
+      "modifiedDate": "2021-01-30T19:15:50.321Z",
+      "isLikedByCurrentUser": true,
+      "isFollowedByCurrentUser": true,
+      "likedBy": [
+        "string"
+      ],
+      "title": "string",
+      "notes": "string",
+      "baseSlideNumber": 0,
+      "slideType": "Presentation",
+      "fileSlideType": "Presentation",
+      "thumbnailSmallSize": 0,
+      "thumbnailMediumSize": 0,
+      "thumbnailLargeSize": 0,
+      "id": 0,
+      "baseFileId": 0,
+      "slideHistoryId": 0,
+      "version": 0,
+      "apiUrl": "string",
+      "thumbnailSmallUrl": "string",
+      "thumbnailMediumUrl": "string",
+      "thumbnailLargeUrl": "string",
+      "commentCount": 0,
+      "likeCount": 0
+    },
+    "fileType": "Presentation",
+    "processingStatus": "WaitingForProcessing",
+    "apiUrl": "string",
+    "thumbnailSmallUrl": "string",
+    "thumbnailMediumUrl": "string",
+    "thumbnailLargeUrl": "string",
+    "thumbnailSmallDownloadUrl": "string",
+    "thumbnailMediumDownloadUrl": "string",
+    "thumbnailLargeDownloadUrl": "string",
+    "thumbnailSmallSize": 0,
+    "thumbnailMediumSize": 0,
+    "thumbnailLargeSize": 0,
+    "downloadUrl": "string",
+    "embedUrl": "string",
+    "id": 0,
+    "name": "string",
+    "description": "string",
+    "createdDate": "2021-01-30T19:15:50.321Z",
+    "modifiedDate": "2021-01-30T19:15:50.321Z",
+    "createdById": "00000000-0000-0000-0000-000000000000",
+    "createdByName": "string",
+    "modifiedById": "00000000-0000-0000-0000-000000000000",
+    "modifiedByName": "string",
+    "parentFolderId": 0,
+    "portalId": 0,
+    "isFolder": true,
+    "deleted": true
+  },
+  "parentBuilderPresentationId": 0,
+  "presentations": [
+    {}
+  ],
+  "insertBeforeSlideNumber": -1
+ }
+
+
+Sample Unsuccessful Response - Builder Foundation PresentationId not found
+###########################################################################
+
+Response Code
+$$$$$$$$$$$$$
+
+400 (Bad Request)
+
+Response Body
+$$$$$$$$$$$$$$
+
+::
+
+ Invalid Builder PresentationId 0000
+
+Where **0000** is the builder presentation ID sent in the URL 
+ 
+
+Sample Unsuccessful Response - Attempting to act on root Builder Foundation PresentationId
+###########################################################################################
+
+Response Code
+$$$$$$$$$$$$$
+
+400 (Bad Request)
+
+Response Body
+$$$$$$$$$$$$$$
+
+::
+
+ Root Builder Presentations can only be added or removed 
  
  
  
