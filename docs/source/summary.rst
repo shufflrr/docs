@@ -2709,12 +2709,50 @@ Sample Request Body
   "query": "string",
   "includeFacets": true,
   "filters": {},
-  "sort": {},
-  "advancedSort": {},
   "page": 0,
   "pageSize": 0
  }
+ 
+Where:
 
+- **query** is the text you are searching for
+- **includeFacets** if set to true will use the advanced search in Shufflrr.  If set to false it will use the Shufflrr simple search.
+- **includeMetadata** will only be evaluated if includeFacets is set to true.  If set to true will include search of tag values.
+-  **includeSlides** when set to true will include slides in the search results and will return slides info in the results.
+- **includeComments** when set to true will filter the results on the comments and will return comments in the results.
+- **includeLikes** when set to true, will include like informaiton in the results.
+- **page** is used for pagination.  The first query should always be set to 1.  
+ - To determine the number of pages that can be requested, use the **totalPages** value sent in the response
+- **pageSize** is used to define the number of results to return per page.  This should always be set to a reasonable number like 40.  If it is set to high it has a higher probability of having the search call timing out.
+- **filters** is used to send in a comma seperated list of filters to use.  The possible filters to send in are:
+ - **fileType** will filter the results based on the file type.  fileType should contain the element **query**.  
+  - query can have a value of pipe (**|**) seperated values to represent the filetypes to query for.
+  - The possible values are:
+   - **0** = Presentation
+   - **1** = Image
+   - **2** = Video
+   - **3** = Document
+   - Sending in an empty query element will not filter the results on filetypes
+ - **name** will filter the results on the name of the file.  name should contain the element **query**.  
+  - query should have the value of the string you wish to filter on.
+ - **slides.notes** will filter the results on the notes of your slides.  slide.notes should contain the element **query**.  
+  - query should have the value of the string you wish to filter on.
+ - **slides.textContent** will filter the results on the text content of your slides.  slides.textContent should contain the element **query**.  
+  - query should have the value of the string you wish to filter on.
+ - **slides.title** will filter the results on the title of your slides.  slides.title should contain the element **query**.  
+  - query should have the value of the string you wish to filter on.
+ - **comments.text** will filter the results on the comments.  comments.text should contain the element **query**.  
+  - query should have the value of the string you wish to filter on.
+- **metadataFilters** will filter the results on the criteria specified for the metadata (tags).  It takes a comma seperated list of metadata type elements by their IDs.  Each ID will contain a comma seperated list of filter elements.  
+ - **field** this should always be set to **values**.
+ - **eq** if the value you are looking for should be an exact match (equal), set the value to this element.  Otherwise either set to null or don't send it in.
+ - **lt** if the value you are looking for should be less than the specified value, set the value to this element.  Otherwise either set to null or don't send it in.
+ - **lte** if the value you are looking for should less than or equal to the specified value, set the value to this element.  Otherwise either set to null or don't send it in.
+ - **gt** if the value you are looking for should be greater than the specified value, set the value to this element.  Otherwise either set to null or don't send it in.
+ - **gte** if the value you are looking for should greater than or equal to the specified value, set the value to this element.  Otherwise either set to null or don't send it in.
+ - **query** if you are looking for more than one possible value set the values as a pipe seperated list as the value to this element.  Otherwise either set to null or don't send it in.
+ 
+ 
 Sample Response Body
 ######################
 
@@ -2774,3 +2812,30 @@ Sample Response Body
     }
   ]
  }
+
+Where:
+
+- **query** returns the query you used for the search. 
+- **total** is the total number of results that the search process found.
+- **totalPages** is the total number of pages of results. 
+- **hits** is an array of the search results.  Will be empty ([]) if there are 0 results.
+ - The main elements of each hit result are:
+  - highlights - this provides the main elements of the hit this some examples of highlights are:
+   - slides.title - this is the title of the slide that the search result was found in (hit)
+   - name - this is the name of the document of the hit
+   - slides.textContent - this is the slide content of the hit
+  - innerHits - this is the more detailed informaiton on the hit
+  - score - This is the calculated value of how well the hit matches the search query.  The higher the number the better the match.
+  - source - This is information on the file that the hit was in 
+  - type - This is the type of item the hit was found on.  This will always be file.
+- **facets** are the breakdown of the search results.  It will provide numbers of how many results are found for each facet and a breakdown of how many in the facet were found in each item (bucket).
+ - **name** is the name of the facet.  The possible facets are:
+  - metadata
+  - parentFolderId
+  - fileType
+  - Tags - each will be listed as their own element with the naming convention of metadata-<metaDataTypeID>
+ - **otherCount** is the number of search results that have unclassified file extension.  This number will almost always be 0.
+ - **buckets** is a list of items (in the specific bucket) that the search results (hits) were found in with the value being the number of results in the bucket.  Examples of buckets:
+  - parentFolderId - the IDs of the folders that the hits are in
+  - fileType - the number of hits that are of each fileType
+  - metadata-<ID> - where <ID> is the ID fo the MetadataType (Tag) - This will show the number of hits for each option, the option will be the element key and the hit count will be the value.
