@@ -2820,7 +2820,7 @@ Where:
 - **totalPages** is the total number of pages of results. 
 - **hits** is an array of the search results.  Will be empty ([]) if there are 0 results.
  - The main elements of each hit result are:
-  - highlights - this provides the main elements of the hit this some examples of highlights are:
+  - highlights - this provides the main elements of the hit some examples of highlights are:
    - slides.title - this is the title of the slide that the search result was found in (hit)
    - name - this is the name of the document of the hit
    - slides.textContent - this is the slide content of the hit
